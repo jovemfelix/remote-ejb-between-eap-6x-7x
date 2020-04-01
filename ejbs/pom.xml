@@ -26,6 +26,20 @@
         <module>client</module>
     </modules>
 
+<!--    <dependencyManagement>-->
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>org.jboss.as</groupId>-->
+<!--                <artifactId>jboss-as-ejb-client-bom</artifactId>-->
+<!--                <version>7.5.0.Final-redhat-21</version>-->
+<!--                &lt;!&ndash;            <version>7.2.0.Final</version>&ndash;&gt;-->
+
+<!--                <scope>import</scope>-->
+<!--                <type>pom</type>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
+<!--    </dependencyManagement>-->
+
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>

@@ -56,19 +56,19 @@ public class Servlet extends HttpServlet {
             write(response, "------");
             write(response, "OK!");
 
-            a = 1;
-            b = 10;
-            write(response, "------ REVERSE ORDER");
-            CalculatorReverseClient calcRev = new CalculatorReverseClient();
-
-            write(response, String.format("%s \t %s \t %s \t = %s", a, "+", b, calcRev.add(a, b)));
-            write(response, "------");
-
-            a = 99;
-            b = 7;
-            write(response, String.format("%s \t %s \t %s \t = %s", a, "-", b, calcRev.subtract(a, b)));
-            write(response, "------");
-            write(response, "OK!");
+//            a = 1;
+//            b = 10;
+//            write(response, "------ REVERSE ORDER");
+//            CalculatorReverseClient calcRev = new CalculatorReverseClient();
+//
+//            write(response, String.format("%s \t %s \t %s \t = %s", a, "+", b, calcRev.add(a, b)));
+//            write(response, "------");
+//
+//            a = 99;
+//            b = 7;
+//            write(response, String.format("%s \t %s \t %s \t = %s", a, "-", b, calcRev.subtract(a, b)));
+//            write(response, "------");
+//            write(response, "OK!");
 
             System.out.println("SUCESS!");
         } catch (Exception e) {

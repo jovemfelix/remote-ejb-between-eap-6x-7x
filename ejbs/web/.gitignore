@@ -1,0 +1,8 @@
+target/
+.settings/
+.externalToolBuilders/
+bin/
+/.classpath
+/.project
+/target/
+/tattletale/

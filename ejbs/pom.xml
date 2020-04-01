@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jboss.quickstarts.eap</groupId>
-    <artifactId>jboss-ejb-remote</artifactId>
+    <artifactId>poc-bpm-parent</artifactId>
     <version>6.4.0.GA</version>
     <packaging>pom</packaging>
     <name>JBoss EAP Quickstart: ejb-remote</name>
@@ -18,12 +18,15 @@
         <maven.compiler.target>1.6</maven.compiler.target>
         <maven.compiler.source>1.6</maven.compiler.source>
 
+        <version.eap6>6.4.21.GA</version.eap6> <!-- eap 6.4.4 -->
+
     </properties>
 
     <modules>
         <module>server-side</module>
-        <module>server-side-reverse</module>
-        <module>client</module>
+<!--        <module>server-side-reverse</module>-->
+<!--        <module>client</module>-->
+        <module>web</module>
     </modules>
 
 <!--    <dependencyManagement>-->

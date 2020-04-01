@@ -39,10 +39,11 @@ public class CalculatorReverseClient {
         Logger.getLogger("org.xnio").setLevel(Level.OFF);
 
         InitialContext context = getInitialContext();
-        String moduleName = "ejb-remote-server-side-reverse";
-        String simpleName = "CalculatorReverseBean";
-        String lookupName = "ejb:/" + moduleName + "/" + simpleName + "!" + RemoteCalculatorReverse.class.getName();
-//        String lookupName = "ejb:/" + moduleName + "/" + simpleName + "!" + RemoteCalculatorReverse.class.getName();
+
+        String lookupName = "ejb:" + "ear-6.4.0.GA/org.jboss.quickstarts.eap-ejb-remote-server-side-reverse-6.4.0.GA/CalculatorReverseBean!org.jboss.as.quickstarts.ejb.remote.stateless.RemoteCalculatorReverse";
+//        String lookupName = "ejb:/" + "ear-6.4.0.GA/org.jboss.quickstarts.eap-ejb-remote-server-side-reverse-6.4.0.GA/CalculatorReverseBean!org.jboss.as.quickstarts.ejb.remote.stateless.RemoteCalculatorReverse";
+
+
         System.out.println("\t [lookupName] " + lookupName);
         Object lookup = context.lookup(lookupName);
         System.out.println("\t ** lookup >> " + lookup);

@@ -39,7 +39,8 @@ public class CalculatorClient {
         Logger.getLogger("org.xnio").setLevel(Level.OFF);
 
         InitialContext context = getInitialContext();
-        String moduleName = "ejb-remote-server-side";
+//        String moduleName = "ejb-remote-server-side";
+        String moduleName = "bpm-web";
         String simpleName = "CalculatorBean";
         String lookupName = "ejb:/" + moduleName + "/" + simpleName + "!" + RemoteCalculator.class.getName();
         System.out.println("\t [lookupName] " + lookupName);

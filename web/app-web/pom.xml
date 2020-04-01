@@ -21,12 +21,12 @@
 
     <parent>
         <groupId>org.jboss.quickstarts.eap</groupId>
-        <artifactId>jboss-ejb-multi-server</artifactId>
+        <artifactId>poc-sin-parent</artifactId>
         <version>6.4.0.GA</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>ejb-multi-server-app-web</artifactId>
+    <artifactId>sin-web</artifactId>
     <packaging>war</packaging>
 
     <name>JBoss EAP Quickstart: ejb-multi-server - app-web</name>

@@ -12,21 +12,26 @@ import javax.naming.NamingException;
 @Stateless
 @Remote(RemoteCalculator.class)
 public class CalculatorBean implements RemoteCalculator {
+    private final CalculatorReverseClient reverse;
+
+    public CalculatorBean() throws NamingException {
+        this.reverse = new CalculatorReverseClient();
+    }
 
     @Override
     public int add(int a, int b) {
-        try {
-            System.out.println("*** chamada remota INI");
-            System.out.println(new CalculatorReverseClient().add(a + 100, b + 100));
-            System.out.println("*** chamada remota FIM");
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
-        return a + b;
+        System.out.println("*** chamada remota INI");
+        int x = reverse.add(a, b);
+        System.out.println("*** chamada remota FIM");
+
+        return x;
     }
 
     @Override
     public int subtract(int a, int b) {
-        return a - b;
+        System.out.println("*** chamada remota INI");
+        int x = reverse.subtract(a, b);
+        System.out.println("*** chamada remota FIM");
+        return x;
     }
 }

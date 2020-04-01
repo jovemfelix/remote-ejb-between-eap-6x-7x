@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ear</artifactId>
+    <packaging>ear</packaging>
+
+    <parent>
+        <groupId>org.jboss.quickstarts.eap</groupId>
+        <artifactId>jboss-ejb-multi-server</artifactId>
+        <version>6.4.0.GA</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency><groupId>${project.groupId}</groupId><artifactId>ejb-remote-server-side-reverse</artifactId><version>${project.version}</version><type>ejb</type></dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.8.1</version></plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <version>7</version>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <modules></modules>
+                    <filtering>true</filtering>
+                </configuration>
+            </plugin>
+
+<!--            <plugin>-->
+<!--                &lt;!&ndash;-->
+<!--                To use, set the JBOSS_HOME environment variable and run:-->
+<!--                mvn package wildfly:deploy-->
+<!--                 &ndash;&gt;-->
+<!--                <groupId>org.wildfly.plugins</groupId>-->
+<!--                <artifactId>wildfly-maven-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <hostname>${deploy-hostname}</hostname>-->
+<!--                    <port>${deploy-port}</port>-->
+<!--                    <username>${deploy-username}</username>-->
+<!--                    <password>${deploy-password}</password>-->
+
+<!--                    <domain>-->
+<!--                        <server-groups>-->
+<!--                            <server-group>${deploy-server-group}</server-group>-->
+<!--                        </server-groups>-->
+<!--                    </domain>-->
+<!--                    <timeout>20000</timeout>-->
+<!--                    <force>true</force>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+        </plugins>
+    </build>
+</project>

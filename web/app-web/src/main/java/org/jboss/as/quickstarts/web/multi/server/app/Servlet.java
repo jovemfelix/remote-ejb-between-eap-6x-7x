@@ -47,16 +47,16 @@ public class Servlet extends HttpServlet {
             write(response, "------ NATURAL ORDER");
             CalculatorClient calc = new CalculatorClient();
 
-            write(response, String.format("%s \t %s \t %s \t = %s", a, "+", b, calc.add(a, b)));
+            write(response, String.format("%s %s %s = %s", a, "+", b, calc.add(a, b)));
             write(response, "------");
 
             a = 99;
             b = 7;
-            write(response, String.format("%s \t %s \t %s \t = %s", a, "-", b, calc.subtract(a, b)));
+            write(response, String.format("%s %s %s = %s", a, "-", b, calc.subtract(a, b)));
             write(response, "------");
             write(response, "OK!");
 
-            System.out.println("SUCESS!");
+            LOGGER.info("SUCESS!");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -34,19 +34,22 @@ import java.util.logging.Logger;
  * @author <a href="mailto:wfink@redhat.com">Wolf-Dieter Fink</a>
  */
 public class CalculatorReverseClient {
+    private static final Logger LOGGER = Logger.getLogger(CalculatorReverseClient.class.getName());
+
     public CalculatorReverseClient() throws NamingException {
         // suppress output of client messages
         Logger.getLogger("org.jboss").setLevel(Level.OFF);
         Logger.getLogger("org.xnio").setLevel(Level.OFF);
+        Logger.getLogger("org.jboss.as.quickstarts").setLevel(Level.FINEST);
 
         InitialContext context = getInitialContext();
         String moduleName = "ejb-remote-server-side-reverse";
         String simpleName = "CalculatorReverseBean";
         String lookupName = "ejb:/" + moduleName + "/" + simpleName + "!" + RemoteCalculatorReverse.class.getName();
 //        String lookupName = "ejb:/" + moduleName + "/" + simpleName + "!" + RemoteCalculatorReverse.class.getName();
-        System.out.println("\t [lookupName] " + lookupName);
+        LOGGER.info("[lookupName] " + lookupName);
         Object lookup = context.lookup(lookupName);
-        System.out.println("\t ** lookup >> " + lookup);
+        LOGGER.info("** lookup >> " + lookup);
         calculator = (RemoteCalculatorReverse) lookup;
     }
 
@@ -63,21 +66,21 @@ public class CalculatorReverseClient {
 //        int a = 204;
 //        int b = 340;
 //        new CalculatorReverseClient().add(a, b);
-        System.out.println(RemoteCalculatorReverse.class.getSimpleName());
+        LOGGER.info(RemoteCalculatorReverse.class.getSimpleName());
     }
 
     public int add(int a, int b) {
-        System.out.println("\t ** Adicionando " + a + " and " + b + " via the remote stateless calculator deployed on the server");
+        LOGGER.info("** Adicionando " + a + " and " + b + " via the remote stateless calculator deployed on the server");
         int sum = calculator.add(a, b);
-        System.out.println("Remote calculator returned = " + sum);
+        LOGGER.info("Remote calculator returned = " + sum);
 
         return sum;
     }
 
     public int subtract(int a, int b) {
-        System.out.println("\t ** Subtraindo " + a + " and " + b + " via the remote stateless calculator deployed on the server");
+        LOGGER.info("** Subtraindo " + a + " and " + b + " via the remote stateless calculator deployed on the server");
         int sum = calculator.subtract(a, b);
-        System.out.println("Remote calculator returned = " + sum);
+        LOGGER.info("Remote calculator returned = " + sum);
 
         return sum;
     }

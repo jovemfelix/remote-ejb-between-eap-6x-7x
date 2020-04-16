@@ -1,0 +1,37 @@
+batch
+
+##########
+/core-service=management/security-realm=ejb-security-realm:add()
+/core-service=management/security-realm=ejb-security-realm/server-identity=secret:add(value="cmVkaGF0QDEyMw==")
+reload
+
+/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=remote-ejb:add(host=localhost, port=4547)
+/subsystem=remoting/remote-outbound-connection=remote-ejb-connection:add(outbound-socket-binding-ref=remote-ejb, security-realm=ejb-security-realm, username=ejb, protocol=remote)
+
+/subsystem=remoting/remote-outbound-connection=remote-ejb-connection/property=SASL_POLICY_NOANONYMOUS:add(value=false)
+/subsystem=remoting/remote-outbound-connection=remote-ejb-connection/property=SSL_ENABLED:add(value=false)
+/subsystem=remoting/remote-outbound-connection=remote-ejb-connection/property=SSL_STARTTLS:add(value=false)
+reload
+
+# only for eap-7
+	/socket-binding-group=standard-sockets/socket-binding=remoting:add(port=4447)
+	/subsystem=remoting/connector=remoting-connector:add(socket-binding=remoting, security-realm=ApplicationRealm)
+
+
+# enable ejb logging 
+/subsystem=logging/logger=org.jboss.as.domain.management.security:add()
+/subsystem=logging/logger=org.jboss.as.domain.management.security:write-attribute(name=level, value=TRACE)
+/subsystem=logging/logger=org.jboss.sasl:add()
+/subsystem=logging/logger=org.jboss.sasl:write-attribute(name=level, value=TRACE)
+/subsystem=logging/logger=org.jboss.security:add()
+/subsystem=logging/logger=org.jboss.security:write-attribute(name=level, value=TRACE)
+/subsystem=logging/logger=org.jboss.as.ejb3:add()
+/subsystem=logging/logger=org.jboss.as.ejb3:write-attribute(name=level, value=TRACE)
+/subsystem=logging/logger=org.jboss.as.remoting:add()
+/subsystem=logging/logger=org.jboss.as.remoting:write-attribute(name=level, value=TRACE)
+/subsystem=logging/logger=org.jboss.remoting3:add()
+/subsystem=logging/logger=org.jboss.remoting3:write-attribute(name=level, value=TRACE)
+/subsystem=logging/logger=org.jboss.remoting:add()
+/subsystem=logging/logger=org.jboss.remoting:write-attribute(name=level, value=TRACE)
+
+run-batch

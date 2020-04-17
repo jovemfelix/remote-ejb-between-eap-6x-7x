@@ -2,8 +2,7 @@ package org.jboss.as.quickstarts.ejb.remote.stateless;
 
 import org.jboss.as.quickstarts.ejb.client.CalculatorReverseClient;
 
-import javax.ejb.Remote;
-import javax.ejb.Stateless;
+import javax.ejb.*;
 import javax.naming.NamingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +12,7 @@ import java.util.logging.Logger;
  */
 @Stateless
 @Remote(RemoteCalculator.class)
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class CalculatorBean implements RemoteCalculator {
     private static final Logger LOGGER = Logger.getLogger(CalculatorBean.class.getName());
 
@@ -28,6 +28,7 @@ public class CalculatorBean implements RemoteCalculator {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public int add(int a, int b) {
         LOGGER.info("*** chamada remota INI");
         int x = reverse.add(a, b);
@@ -37,6 +38,7 @@ public class CalculatorBean implements RemoteCalculator {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public int subtract(int a, int b) {
         LOGGER.info("*** chamada remota INI");
         int x = reverse.subtract(a, b);

@@ -24,8 +24,6 @@
 
     <modules>
         <module>server-side</module>
-<!--        <module>server-side-reverse</module>-->
-<!--        <module>client</module>-->
         <module>web</module>
     </modules>
 

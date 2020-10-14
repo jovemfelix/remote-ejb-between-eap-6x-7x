@@ -43,9 +43,6 @@ public class CalculatorReverseClient {
         Logger.getLogger("org.jboss.as.quickstarts").setLevel(Level.FINEST);
 
         InitialContext context = getInitialContext();
-        String moduleName = "ejb-remote-server-side-reverse";
-        String simpleName = "CalculatorReverseBean";
-//        String lookupName = "ejb:/" + moduleName + "/" + simpleName + "!" + RemoteCalculatorReverse.class.getName();
         String lookupName = "ejb:ear-6.4.0.GA/org.jboss.quickstarts.eap-ejb-remote-server-side-reverse-6.4.0.GA/CalculatorReverseBean!org.jboss.as.quickstarts.ejb.remote.stateless.RemoteCalculatorReverse";
         LOGGER.info("[lookupName] " + lookupName);
         Object lookup = context.lookup(lookupName);

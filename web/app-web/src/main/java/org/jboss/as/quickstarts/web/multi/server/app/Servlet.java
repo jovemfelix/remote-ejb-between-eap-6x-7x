@@ -45,7 +45,7 @@ public class Servlet extends HttpServlet {
             a = 1;
             b = 10;
             write(response, "------ NATURAL ORDER");
-            CalculatorClient calc = new CalculatorClient();
+            CalculatorReverseClient calc = new CalculatorReverseClient();
 
             write(response, String.format("%s %s %s = %s", a, "+", b, calc.add(a, b)));
             write(response, "------");
